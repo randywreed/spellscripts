@@ -6,8 +6,8 @@ run=client.runs.new(command=cmd,machine_type='k80x2-prempt',\
     github_url="https://github.com/randywreed/gpt2-generate.git", \
     github_ref="master",pip_packages=["gpt-2-simple"], \
     attached_resources={'runs/54/models':'/spell/models'})
-run.wait_status(*client.runs.FINAL)
 print(run.id)
+run.wait_status(*client.runs.FINAL)
 run.cp("simple_results.csv")
 for line in run.logs():
     print(line)
